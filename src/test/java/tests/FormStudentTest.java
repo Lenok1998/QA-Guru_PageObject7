@@ -28,7 +28,7 @@ public class FormStudentTest extends TestBase {
                 .checkResultTable("Student Email", "lena.malicheva@mail.ru")
                 .checkResultTable("Gender", "Female")
                 .checkResultTable("Mobile", "9873058652")
-                .checkResultTable("Date of Birth", "13 July,19998")
+                .checkResultTable("Date of Birth", "13 July,1998")
                 .checkResultTable("Subjects", "Maths")
                 .checkResultTable("Hobbies", "Reading")
                 .checkResultTable("Picture", "my.png")
