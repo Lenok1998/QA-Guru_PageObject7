@@ -1,54 +1,57 @@
 package tests;
-
+import data.TestData;
 import  org.junit.jupiter.api.Test;
 import pages.FormStudentPage;
 
 public class FormStudentTest extends TestBase {
     FormStudentPage formStudentPage = new FormStudentPage();
+    TestData testData = new TestData();
 
     @Test
     void fillFormTest() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
-                .setFirstName("Elena")
-                .setLastName("Malysheva")
-                .setGender("Female")
-                .setPhoneNumber("9873058652")
-                .setDateOfBirth("13", "July", "1998")
-                .setUserEmail("lena.malicheva@mail.ru")
-                .setHobbies("Reading")
-                .setSubject("Math")
-                .setCurrentAddress("Lunnaya 43B str. ")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
+                .setPhoneNumber(testData.userNumber)
+                .setDateOfBirth(testData.day, testData.month, testData.year)
+                .setUserEmail(testData.userEmail)
+                .setHobbies(testData.hobbies)
+                .setSubject(testData.subjects)
+                .setCurrentAddress(testData.streetAddress)
                 .uploadFile("my.png")
-                .setState("Uttar Pradesh")
-                .setCity("Lucknow")
+                .setState(testData.state)
+                .setCity(testData.city)
                 .submit();
 
-        formStudentPage.checkResultTable("Student Name", "Elena Malysheva")
-                .checkResultTable("Student Email", "lena.malicheva@mail.ru")
-                .checkResultTable("Gender", "Female")
-                .checkResultTable("Mobile", "9873058652")
-                .checkResultTable("Date of Birth", "13 July,1998")
-                .checkResultTable("Subjects", "Maths")
-                .checkResultTable("Hobbies", "Reading")
+        formStudentPage.checkResultTable("Student Name", testData.firstName + "\n" + testData.lastName)
+                .checkResultTable("Student Email", testData.userEmail)
+                .checkResultTable("Gender", testData.gender)
+                .checkResultTable("Mobile", testData.userNumber)
+                .checkResultTable("Date of Birth", testData.day + "\n" +
+                        testData.month + "," +
+                        testData.year)
+                .checkResultTable("Subjects", testData.subjects)
+                .checkResultTable("Hobbies", testData.hobbies)
                 .checkResultTable("Picture", "my.png")
-                .checkResultTable("Address", "Lunnaya 43B str. ")
-                .checkResultTable("State and City", "Uttar Pradesh Lucknow");
+                .checkResultTable("Address", testData.streetAddress)
+                .checkResultTable("State and City", testData.state + "\n" + testData.city);
     }
 
     @Test
     void inputMinimalData() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
-                .setFirstName("Elena")
-                .setLastName("Malysheva")
-                .setGender("Female")
-                .setPhoneNumber("9873058652")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
+                .setPhoneNumber(testData.userNumber)
                 .submit();
 
-        formStudentPage.checkResultTable("Student Name", "Elena Malysheva")
-                .checkResultTable("Gender", "Female")
-                .checkResultTable("Mobile", "9873058652");
+        formStudentPage.checkResultTable("Student Name",testData.firstName + "\n" + testData.lastName)
+                .checkResultTable("Gender", testData.gender)
+                .checkResultTable("Mobile", testData.userNumber);
 
     }
 
@@ -56,9 +59,9 @@ public class FormStudentTest extends TestBase {
     void inputInvalidMobileNumber() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
-                .setFirstName("Elena")
-                .setLastName("Malysheva")
-                .setGender("Female")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
                 .setPhoneNumber("8987")
                 .submit();
 
