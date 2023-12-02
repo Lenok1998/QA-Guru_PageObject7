@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import pages.components.TableComponent;
 import static com.codeborne.selenide.Selectors.byText;
@@ -27,77 +28,88 @@ public class FormStudentPage {
             submit = $("#submit");
 
 
+    @Step("Удаляем баннер")
     public FormStudentPage cleanAdvertisementOnPage() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove");
         return this;
     }
-
+    @Step("Открываем страницу")
     public FormStudentPage openPage() {
         open("/automation-practice-form");
         return this;
     }
 
+    @Step("Вводим имя")
     public FormStudentPage setFirstName(String value) {
         firstName.setValue(value);
         return this;
     }
-
+    @Step("Вводим фамилию")
     public FormStudentPage setLastName(String value) {
         lastName.setValue(value);
         return this;
     }
 
+    @Step("Вводим email")
     public FormStudentPage setUserEmail(String value) {
         email.setValue(value);
         return this;
     }
 
+    @Step("Вводим хобби")
     public FormStudentPage setHobbies(String value) {
         hobbies.$(byText(value)).click();
         return this;
     }
+    @Step("Вводим информацию")
     public FormStudentPage setSubject(String value) {
         subject.val(value).pressEnter();
         return this;
     }
 
+    @Step("Вводим информацию")
     public FormStudentPage setGender(String value) {
         genderWrapper.$(byText(value)).click();
         return this;
     }
-
+    @Step("Загружаем файл")
     public FormStudentPage uploadFile(String value) {
         picture.uploadFromClasspath(value);
         return this;
     }
-
+    @Step("Выбираем значение в календаре")
     public FormStudentPage setDateOfBirth(String day, String month, String year) {
         calendar.click();
         calendarComponent.setDate(day, month, year);
         return this;
     }
 
+    @Step("Вводим номер телефона")
     public FormStudentPage setPhoneNumber(String value) {
         phoneNumber.setValue(value);
         return this;
     }
 
+    @Step("Вводим адрес")
     public FormStudentPage setCurrentAddress(String value) {
         currentAddress.setValue(value);
         return this;
     }
 
+    @Step("Вводим штат")
     public FormStudentPage setState(String value) {
         selectState.val(value).pressEnter();
         return this;
     }
 
+    @Step("Вводим город")
     public FormStudentPage setCity(String value) {
         selectCity.val(value).pressEnter();
         return this;
     }
 
+    @Step("Нажимаем кнопку")
     public FormStudentPage submit() {
         submit.click();
         return this;
