@@ -44,7 +44,7 @@ dependencies {
         }
     }
 }
-    task demoqa_test(type: Test) {
+tasks.register('demoqa_test', Test) {
     useJUnitPlatform {
         includeTags("DemoQa")
     }

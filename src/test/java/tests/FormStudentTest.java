@@ -1,9 +1,11 @@
 package tests;
 import data.TestData;
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Tag;
 import  org.junit.jupiter.api.Test;
 import pages.FormStudentPage;
 
+@Tag("Заполнение формы случайными тестовыми данными")
 public class FormStudentTest extends TestBase {
     FormStudentPage formStudentPage = new FormStudentPage();
     TestData testData = new TestData();
