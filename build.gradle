@@ -4,18 +4,18 @@ plugins {
 }
 allure {
     report {
-        version.set("2.24.0")
+        version.set("2.19.0")
     }
-    adapter {
-        aspectjWeaver.set(true)
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
-            junit5 {
-                adapterVersion.set("2.24.0")
+            junit5 { //название фреймворка
+                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
             }
         }
     }
 }
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 repositories {
@@ -29,8 +29,9 @@ dependencies {
             'org.slf4j:slf4j-simple:2.0.7',
             'com.github.javafaker:javafaker:1.0.2',
            'io.qameta.allure:allure-selenide:2.24.0'
-    )
 
+    )
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
 }
 
         tasks.withType(Test) {

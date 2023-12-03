@@ -1,5 +1,6 @@
 package tests;
 import data.TestData;
+import io.qameta.allure.Step;
 import  org.junit.jupiter.api.Test;
 import pages.FormStudentPage;
 
@@ -8,6 +9,7 @@ public class FormStudentTest extends TestBase {
     TestData testData = new TestData();
 
     @Test
+    @Step("Заполняем форму валидными данными")
     void fillFormTest() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
@@ -40,6 +42,7 @@ public class FormStudentTest extends TestBase {
     }
 
     @Test
+    @Step("Заполняем форму неполностью")
     void inputMinimalData() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
@@ -56,6 +59,7 @@ public class FormStudentTest extends TestBase {
     }
 
     @Test
+    @Step("Вводим невалидный номер телефона")
     void inputInvalidMobileNumber() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
