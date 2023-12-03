@@ -14,7 +14,7 @@ public class TestData {
             streetAddress = faker.address().streetAddress(),
             gender = faker.options().option("Male", "Female", "Other"),
             userNumber = faker.phoneNumber().subscriberNumber(10),
-            day = String.valueOf(faker.number().numberBetween(1, 30)),
+            day = String.format("%02d", faker.number().numberBetween(1,28)),
             month = faker.options().option("January", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"),
             year = String.valueOf(faker.number().numberBetween(1980, 2000)),
             subjects = faker.options().option("Maths", "Accounting", "Arts", "Social Studies"),
