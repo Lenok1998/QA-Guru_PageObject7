@@ -31,7 +31,7 @@ public class FormStudentPage {
     @Step("Удаляем баннер")
     public FormStudentPage cleanAdvertisementOnPage() {
         executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove");
+        executeJavaScript("$('footer').remove()");;
         return this;
     }
     @Step("Открываем страницу")
