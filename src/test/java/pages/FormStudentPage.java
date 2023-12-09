@@ -7,6 +7,8 @@ import pages.components.CalendarComponent;
 import pages.components.TableComponent;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
+
 
 public class FormStudentPage {
 
@@ -28,90 +30,119 @@ public class FormStudentPage {
             submit = $("#submit");
 
 
-    @Step("Удаляем баннер")
+
     public FormStudentPage cleanAdvertisementOnPage() {
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");;
+        step("Удаляем баннер", () -> {
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
+        });
         return this;
     }
-    @Step("Открываем страницу")
+
     public FormStudentPage openPage() {
-        open("/automation-practice-form");
+        step("Открываем форму", () -> {
+            open("/automation-practice-form");
+        });
         return this;
     }
 
-    @Step("Вводим имя")
+
     public FormStudentPage setFirstName(String value) {
-        firstName.setValue(value);
+        step("Вводим имя", () -> {
+            firstName.setValue(value);
+        });
         return this;
     }
-    @Step("Вводим фамилию")
+
     public FormStudentPage setLastName(String value) {
-        lastName.setValue(value);
+        step("Вводим фамилию", () -> {
+            lastName.setValue(value);
+        });
         return this;
     }
 
-    @Step("Вводим email")
+
     public FormStudentPage setUserEmail(String value) {
+        step("Вводим email", () -> {
         email.setValue(value);
+    });
         return this;
     }
 
-    @Step("Вводим хобби")
+
     public FormStudentPage setHobbies(String value) {
-        hobbies.$(byText(value)).click();
+        step("Вводим хобби", () -> {
+            hobbies.$(byText(value)).click();
+        });
         return this;
     }
-    @Step("Вводим информацию")
+
     public FormStudentPage setSubject(String value) {
-        subject.val(value).pressEnter();
+        step("Вводим информацию", () -> {
+            subject.val(value).pressEnter();
+        });
         return this;
     }
 
-    @Step("Вводим информацию")
+
     public FormStudentPage setGender(String value) {
-        genderWrapper.$(byText(value)).click();
+        step("Выбираем пол", () -> {
+            genderWrapper.$(byText(value)).click();
+        });
         return this;
     }
-    @Step("Загружаем файл")
     public FormStudentPage uploadFile(String value) {
-        picture.uploadFromClasspath(value);
+        step("Загружаем фото", () -> {
+            picture.uploadFromClasspath(value);
+        });
         return this;
     }
-    @Step("Выбираем значение в календаре")
+
     public FormStudentPage setDateOfBirth(String day, String month, String year) {
-        calendar.click();
-        calendarComponent.setDate(day, month, year);
+        step("Выбираем дату рождения в календаре", () -> {
+            calendar.click();
+            calendarComponent.setDate(day, month, year);
+        });
         return this;
     }
 
-    @Step("Вводим номер телефона")
+
     public FormStudentPage setPhoneNumber(String value) {
-        phoneNumber.setValue(value);
+        step("Вводим номер телефона", () -> {
+            phoneNumber.setValue(value);
+        });
         return this;
     }
 
-    @Step("Вводим адрес")
+
     public FormStudentPage setCurrentAddress(String value) {
-        currentAddress.setValue(value);
+        step("Вводим адрес", () -> {
+            currentAddress.setValue(value);
+        });
         return this;
     }
 
-    @Step("Вводим штат")
+
     public FormStudentPage setState(String value) {
-        selectState.val(value).pressEnter();
+        step("Вводим штат", () -> {
+            selectState.val(value).pressEnter();
+        });
         return this;
     }
 
-    @Step("Вводим город")
+
     public FormStudentPage setCity(String value) {
-        selectCity.val(value).pressEnter();
+        step("Вводим горол", () -> {
+            selectCity.val(value).pressEnter();
+        });
         return this;
     }
 
-    @Step("Нажимаем кнопку")
+
     public FormStudentPage submit() {
-        submit.click();
+        step("Нажимаем кнопку", () -> {
+            submit.click();
+        });
         return this;
     }
 

@@ -44,8 +44,21 @@ dependencies {
         }
     }
 }
-tasks.register('demoqa_test', Test) {
+task my_test(type: Test) {
     useJUnitPlatform {
-        includeTags("DemoQa")
+        includeTags("my-tests")
     }
 }
+
+task positive_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("positive")
+    }
+}
+
+task negative_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("negative")
+    }
+}
+

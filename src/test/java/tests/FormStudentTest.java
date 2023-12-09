@@ -1,5 +1,6 @@
 package tests;
 import data.TestData;
+import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Tag;
 import  org.junit.jupiter.api.Test;
@@ -12,6 +13,9 @@ public class FormStudentTest extends TestBase {
 
     @Test
     @Step("Заполняем форму валидными данными")
+    @Tag("positive")
+    @Tag("my-tests")
+    @Owner("Малышева Елена Сергеевна")
     void fillFormTest() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
@@ -45,6 +49,8 @@ public class FormStudentTest extends TestBase {
 
     @Test
     @Step("Заполняем форму неполностью")
+    @Owner("Малышева Елена Сергеевна")
+    @Tag("negative")
     void inputMinimalData() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
@@ -62,6 +68,10 @@ public class FormStudentTest extends TestBase {
 
     @Test
     @Step("Вводим невалидный номер телефона")
+    @Tag("my-tests")
+    @Owner("Малышева Елена Сергеевна")
+    @Tag("negative")
+
     void inputInvalidMobileNumber() {
         formStudentPage.openPage()
                 .cleanAdvertisementOnPage()
