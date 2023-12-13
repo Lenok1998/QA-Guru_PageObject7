@@ -1,17 +1,1 @@
-{
-  "base": {
-    "project": "${JOB_BASE_NAME}",
-    "environment": "Test",
-    "comment": "Тегнуть @ElenaMalysheva98",
-    "reportLink": "${BUILD_URL}",
-    "language": "ru",
-    "messenger": "telegram",
-    "allureFolder": "build/allure-report/",
-    "enableChart": true
-  },
-  "telegram": {
-    "token": "6666501902:AAH2tQo2hWGPwsru-IowLpfaicz4Lu0clhc",
-    "chat": "-4020487035",
-    "replyTo": ""
-  }
-}
+
